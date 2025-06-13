@@ -1,0 +1,59 @@
+openapi: 3.0.1
+info:
+  title: Facebook Post Checker API
+  description: ตรวจสอบโพสต์ Facebook พนักงาน พร้อมวิเคราะห์เนื้อหา เวลาโพสต์ และข้อมูลอินเทอร์เน็ต (IP, ISP, ประเทศ)
+  version: "1.0.0"
+servers:
+  - url: https://your-n8n-server.com
+paths:
+  /webhook/fb-post-check:
+    post:
+      summary: ตรวจสอบโพสต์ Facebook จากพนักงาน
+      operationId: checkFacebookPost
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                employee_name:
+                  type: string
+                  example: Mossed
+                post_url:
+                  type: string
+                  example: https://facebook.com/yourpost
+                post_time:
+                  type: string
+                  format: date-time
+                  example: 2025-06-13T15:45:00+07:00
+                content_type:
+                  type: string
+                  enum: [Text, Image, Video, Live]
+                  example: Image
+      responses:
+        '200':
+          description: ผลลัพธ์จากการตรวจสอบโพสต์
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  ip:
+                    type: string
+                    example: 103.XX.XX.XX
+                  country:
+                    type: string
+                    example: Cambodia
+                  isp:
+                    type: string
+                    example: Metfone
+                  timeStatus:
+                    type: string
+                    example: OK
+                  gptAnalysis:
+                    type: string
+                    example: เหมาะสมสำหรับโพสต์การตลาด
