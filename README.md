@@ -1,6 +1,3 @@
---- a/README.md
-+++ b/README.md
-@@ -1,18 +1,21 @@
  # FB Post Checker 888
  Test deployment trigger by Jarvis.
  โครงการนี้เป็นตัวอย่างสำหรับระบบสำรองข้อมูลและ deploy โปรเจกต์ Firebase แบบง่าย ๆ
